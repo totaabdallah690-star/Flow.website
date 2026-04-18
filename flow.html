@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FLOW — Find Life Outside Web | تطبيق فلو التعليمي</title>
+    <meta name="description" content="FLOW helps children aged 8-15 learn about technology, digital safety, coding, and healthy habits through interactive games, stories, and quizzes. فلو يساعد الأطفال على تعلم التكنولوجيا والسلامة الرقمية.">
+    <meta property="og:title" content="FLOW — Find Life Outside Web">
+    <meta property="og:description" content="Educational app for children to learn tech, digital safety, coding, and healthy habits.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://flowapp.dev">
+    <meta property="og:image" content="assets/hero_background.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="theme-color" content="#0A1628">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "FLOW - Find Life Outside Web",
+        "operatingSystem": "Android",
+        "applicationCategory": "EducationalApplication",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "description": "Interactive educational app teaching kids aged 8-15 about technology, digital safety, coding, and healthy habits.",
+        "audience": { "@type": "PeopleAudience", "suggestedMinAge": "8", "suggestedMaxAge": "15" },
+        "inLanguage": ["en", "ar"],
+        "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "ratingCount": "1247" }
+    }
+    </script>
+
+    <!-- Google Fonts + Arabic -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Boogaloo&family=Fredoka:wght@400;500;600;700&family=Nunito:wght@600;700;800&family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+    <!-- SKIP LINK (Accessibility) -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- ============================== NAVBAR ============================== -->
+    <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+        <div class="container nav-container">
+            <a href="#" class="logo" aria-label="FLOW Home">
+                <img src="assets/logo.jpeg" alt="FLOW Logo" class="logo-img">
+                <span class="logo-text">F.L.<span class="logo-accent">O</span>.W</span>
+            </a>
+            <div class="nav-links" id="nav-links" role="menubar">
+                <a href="#features" role="menuitem" data-en="Features" data-ar="المميزات">Features</a>
+                <a href="#stories" role="menuitem" data-en="Stories" data-ar="القصص">Stories</a>
+                <a href="#parents" role="menuitem" data-en="For Parents" data-ar="للآباء">For Parents</a>
+                <a href="demos.html" role="menuitem" data-en="Demos" data-ar="العروض">Demos</a>
+                <a href="about.html" role="menuitem" data-en="About" data-ar="عنّا">About</a>
+                <a href="#download" class="btn btn-primary btn-sm" role="menuitem" data-en="Download Now" data-ar="حمّل الآن">Download Now</a>
+            </div>
+            <button class="lang-toggle-btn" id="lang-toggle" aria-label="Toggle language" title="Toggle Arabic / English">
+                <span class="lang-toggle-icon">🌐</span>
+                <span class="lang-toggle-label" id="lang-label">AR</span>
+            </button>
+            <button class="mobile-menu-btn" id="mobile-btn" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-links">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+        </div>
+    </nav>
+
+    <main id="main-content">
+
+        <!-- ============================== HERO ============================== -->
+        <section id="hero" class="dark-section" aria-labelledby="hero-heading">
+            <div class="particles" id="hero-particles" aria-hidden="true"></div>
+            <div class="hero-glow" aria-hidden="true"></div>
+            <div class="container hero-grid">
+                <div class="hero-content reveal">
+                    <div class="badge-ui" style="color: var(--teal-accent); margin-bottom: 16px;" data-en="Learn • Play • Be Safe" data-ar="تعلّم • العب • كن آمنًا">
+                        Learn &bull; Play &bull; Be Safe
+                    </div>
+                    <h1 id="hero-heading">
+                        <span data-en="Where Kids Become" data-ar="حيث يصبح الأطفال">Where Kids Become</span><br>
+                        <span class="hero-highlight" data-en="Tech Superkids!" data-ar="أبطال التكنولوجيا!">Tech Superkids!</span>
+                        <span class="hero-emoji" aria-hidden="true">🚀</span>
+                    </h1>
+                    <p class="hero-sub" data-en="Learn about technology, stay safe online, and have fun — all in one magical app designed just for you." data-ar="تعلّم عن التكنولوجيا، ابقَ آمنًا على الإنترنت، واستمتع — كل ذلك في تطبيق سحري واحد مصمم خصيصًا لك.">Learn about technology, stay safe online, and have fun — all in one magical app designed just for you.</p>
+
+                    <div class="hero-buttons">
+                        <a href="assets/app-release.apk" download class="btn btn-primary btn-lg" id="hero-download-btn">
+                            <span class="btn-icon" aria-hidden="true">📱</span>
+                            <span data-en="Download APK" data-ar="تحميل التطبيق">Download APK</span>
+                        </a>
+                        <a href="demos.html" class="btn btn-outline btn-lg" id="demo-btn">
+                            <span class="btn-icon" aria-hidden="true">▶️</span>
+                            <span data-en="Watch Demo" data-ar="شاهد العرض">Watch Demo</span>
+                        </a>
+                    </div>
+
+                    <div class="trust-indicators">
+                        <span class="trust-chip" data-en="🛡️ Ages 8–15" data-ar="🛡️ الأعمار ٨-١٥">🛡️ Ages 8–15</span>
+                        <span class="trust-chip" data-en="🌍 Bilingual AR/EN" data-ar="🌍 ثنائي اللغة">🌍 Bilingual AR/EN</span>
+                        <span class="trust-chip" data-en="💚 100% Free" data-ar="💚 مجاني ١٠٠٪">💚 100% Free</span>
+                        <span class="trust-chip" data-en="🚫 No Ads" data-ar="🚫 بدون إعلانات">🚫 No Ads</span>
+                    </div>
+                </div>
+
+                <div class="mockup-wrapper reveal" aria-hidden="true">
+                    <div class="floating-emoji e1">🛡️</div>
+                    <div class="floating-emoji e2">🧠</div>
+                    <div class="floating-emoji e3">🎮</div>
+                    <div class="floating-emoji e4">🤖</div>
+                    <div class="floating-emoji e5">💻</div>
+                    <div class="floating-emoji e6">⭐</div>
+
+                    <div class="phone-mockup">
+                        <div class="phone-notch"></div>
+                        <div class="app-screen">
+                            <div class="app-header">
+                                <div>
+                                    <strong style="font-family: var(--font-heading); font-size: 1.15rem; color: var(--dark-navy);" data-en="Hi, Superkid!" data-ar="أهلاً، يا بطل!">Hi, Superkid!</strong>
+                                    <div style="font-size: 0.75rem; color: #718096;" data-en="Level 4 Explorer" data-ar="المستوى ٤ مستكشف">Level 4 Explorer</div>
+                                </div>
+                                <div class="app-points">⭐ 450</div>
+                            </div>
+
+                            <div class="app-card app-card-hero">
+                                <div class="app-byte">
+                                    <div class="app-byte-robot" aria-hidden="true">
+                                        <div class="mini-byte-head"></div>
+                                        <div class="mini-byte-body"></div>
+                                    </div>
+                                    <h3 style="font-family: var(--font-heading); font-size: 1.15rem; margin-top: 6px;" data-en="Daily Quiz Ready!" data-ar="الاختبار اليومي جاهز!">Daily Quiz Ready!</h3>
+                                    <div style="font-size: 0.8rem; color: var(--teal-accent); font-weight: 800;">+50 <span data-en="points" data-ar="نقطة">points</span></div>
+                                </div>
+                            </div>
+
+                            <div class="app-section-label" data-en="Today's Tasks" data-ar="مهام اليوم">Today's Tasks</div>
+
+                            <div class="app-task">
+                                <span class="app-task-icon">📖</span>
+                                <span style="font-weight: 700; color: var(--dark-navy); font-size: 0.9rem;" data-en="Read a Story" data-ar="اقرأ قصة">Read a Story</span>
+                                <span class="app-task-badge app-task-todo" data-en="To Do" data-ar="للتنفيذ">To Do</span>
+                            </div>
+                            <div class="app-task">
+                                <span class="app-task-icon">🎮</span>
+                                <span style="font-weight: 700; color: var(--dark-navy); font-size: 0.9rem;" data-en="Safety Sort" data-ar="لعبة الأمان">Safety Sort</span>
+                                <span class="app-task-badge app-task-done" data-en="Done ✓" data-ar="تم ✓">Done ✓</span>
+                            </div>
+                            <div class="app-task">
+                                <span class="app-task-icon">🪥</span>
+                                <span style="font-weight: 700; color: var(--dark-navy); font-size: 0.9rem;" data-en="Brush Teeth" data-ar="تنظيف الأسنان">Brush Teeth</span>
+                                <span class="app-task-badge app-task-pending" data-en="Pending" data-ar="قيد الانتظار">Pending</span>
+                            </div>
+
+                            <div class="app-nav-bar" aria-hidden="true">
+                                <div class="app-nav-item app-nav-active">🏠</div>
+                                <div class="app-nav-item">📚</div>
+                                <div class="app-nav-item">🎮</div>
+                                <div class="app-nav-item">🤖</div>
+                                <div class="app-nav-item">👤</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scroll Indicator -->
+            <div class="scroll-indicator" aria-hidden="true">
+                <div class="scroll-mouse">
+                    <div class="scroll-dot"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================== FEATURES ============================== -->
+        <section id="features" class="light-section section-padding" aria-labelledby="features-heading">
+            <div class="container">
+                <div class="section-header reveal">
+                    <div class="badge-ui" style="color: var(--forest-green); margin-bottom: 12px;" data-en="What's Inside" data-ar="ماذا بالداخل">What's Inside</div>
+                    <h2 id="features-heading" data-en="Explore the App Features" data-ar="اكتشف مميزات التطبيق">Explore the App Features</h2>
+                    <p data-en="Everything your child needs to become a responsible, smart, and safe digital citizen." data-ar="كل ما يحتاجه طفلك ليصبح مواطنًا رقميًا مسؤولاً وذكيًا وآمنًا.">Everything your child needs to become a responsible, smart, and safe digital citizen.</p>
+                </div>
+
+                <!-- Card Collection Showcase -->
+                <div class="card-collection-showcase reveal">
+                    <img src="assets/card_collection.png" alt="Tech Universe - 6 collectible cards" class="card-collection-img" loading="lazy">
+                </div>
+
+                <div class="features-grid">
+                    <!-- Feature 1: Tech Universe -->
+                    <div class="feature-card reveal" data-feature="tech-universe">
+                        <div class="feature-icon-wrap">
+                            <div class="feature-icon">💻</div>
+                        </div>
+                        <h3 data-en="Tech Universe" data-ar="عالم التكنولوجيا">Tech Universe</h3>
+                        <p data-en="6 interactive topic cards covering the digital world." data-ar="٦ بطاقات تفاعلية تغطي العالم الرقمي.">6 interactive topic cards covering the digital world.</p>
+                        <ul>
+                            <li data-en="Computers & Internet" data-ar="الحاسوب والإنترنت">Computers & Internet</li>
+                            <li data-en="AI & Coding Basics" data-ar="الذكاء الاصطناعي وأساسيات البرمجة">AI & Coding Basics</li>
+                            <li data-en="Digital Wellness" data-ar="الرفاهية الرقمية">Digital Wellness</li>
+                        </ul>
+                        <div class="feature-cards-row" aria-hidden="true">
+                            <span class="mini-card mc-green">CYBER-BOT</span>
+                            <span class="mini-card mc-blue">STAR-SHIP</span>
+                            <span class="mini-card mc-teal">TECH-JET</span>
+                        </div>
+                    </div>
+
+                    <!-- Feature 2: Safety Sort -->
+                    <div class="feature-card reveal" style="transition-delay: 0.08s;">
+                        <div class="feature-icon-wrap">
+                            <div class="feature-icon">🎮</div>
+                        </div>
+                        <h3 data-en="Safety Sort Game" data-ar="لعبة فرز الأمان">Safety Sort Game</h3>
+                        <p data-en="Classify online actions as Safe ✅ or Risky ⚠️." data-ar="صنّف الأفعال على الإنترنت كآمنة ✅ أو خطرة ⚠️.">Classify online actions as Safe ✅ or Risky ⚠️.</p>
+                        <ul>
+                            <li data-en="Drag-and-drop mechanics" data-ar="آليات السحب والإفلات">Drag-and-drop mechanics</li>
+                            <li data-en="3 difficulty levels" data-ar="٣ مستويات صعوبة">3 difficulty levels</li>
+                            <li data-en="20+ real-world scenarios" data-ar="٢٠+ سيناريو واقعي">20+ real-world scenarios</li>
+                        </ul>
+                        <div class="sort-zones" aria-hidden="true">
+                            <span class="zone-safe" data-en="✅ Safe" data-ar="✅ آمن">✅ Safe</span>
+                            <span class="zone-arrow">→</span>
+                            <span class="zone-risky" data-en="⚠️ Risky" data-ar="⚠️ خطر">⚠️ Risky</span>
+                        </div>
+                    </div>
+
+                    <!-- Feature 3: Brain Quiz -->
+                    <div class="feature-card reveal" style="transition-delay: 0.16s;">
+                        <div class="feature-icon-wrap">
+                            <div class="feature-icon">🧠</div>
+                        </div>
+                        <h3 data-en="Brain Quiz" data-ar="اختبار الدماغ">Brain Quiz</h3>
+                        <p data-en="Test knowledge with instant fun feedback." data-ar="اختبر معلوماتك مع تغذية راجعة فورية وممتعة.">Test knowledge with instant fun feedback.</p>
+                        <ul>
+                            <li data-en="6-question daily quizzes" data-ar="اختبارات يومية من ٦ أسئلة">6-question daily quizzes</li>
+                            <li data-en="Fun facts & animations" data-ar="حقائق ممتعة ورسوم متحركة">Fun facts & animations</li>
+                            <li data-en="Covers safety & hardware" data-ar="يغطي الأمان والأجهزة">Covers safety & hardware</li>
+                        </ul>
+                        <div class="quiz-preview" aria-hidden="true">
+                            <div class="quiz-q" data-en="Q: What makes a strong password?" data-ar="س: ما الذي يجعل كلمة المرور قوية؟">Q: What makes a strong password?</div>
+                            <div class="quiz-options">
+                                <span class="quiz-opt quiz-opt-correct" data-en="Mix of letters, numbers & symbols" data-ar="مزيج من الحروف والأرقام والرموز">Mix of letters, numbers & symbols</span>
+                                <span class="quiz-opt" data-en="Your name + birthday" data-ar="اسمك + تاريخ ميلادك">Your name + birthday</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Feature 4: Tech Tales -->
+                    <div class="feature-card reveal">
+                        <div class="feature-icon-wrap">
+                            <div class="feature-icon">📖</div>
+                        </div>
+                        <h3 data-en="Tech Tales" data-ar="حكايات التكنولوجيا">Tech Tales</h3>
+                        <p data-en="10 original stories about digital safety." data-ar="١٠ قصص أصلية عن السلامة الرقمية.">10 original stories about digital safety.</p>
+                        <ul>
+                            <li data-en="Relatable characters" data-ar="شخصيات قريبة من الواقع">Relatable characters</li>
+                            <li data-en="Comprehension quizzes" data-ar="اختبارات الفهم">Comprehension quizzes</li>
+                            <li data-en="Read-along mode" data-ar="وضع القراءة المشتركة">Read-along mode</li>
+                        </ul>
+                        <div class="characters-row" aria-hidden="true">
+                            <span class="char-avatar">أ</span>
+                            <span class="char-avatar">ل</span>
+                            <span class="char-avatar">م</span>
+                            <span class="char-avatar">ن</span>
+                            <span class="char-avatar">ع</span>
+                        </div>
+                    </div>
+
+                    <!-- Feature 5: BYTE Smart Chat -->
+                    <div class="feature-card reveal" style="transition-delay: 0.08s;">
+                        <div class="feature-icon-wrap">
+                            <div class="feature-icon">🤖</div>
+                        </div>
+                        <h3 data-en="BYTE Smart Chat" data-ar="دردشة BYTE الذكية">BYTE Smart Chat</h3>
+                        <p data-en="Educational chatbot for curious minds." data-ar="روبوت محادثة تعليمي للعقول الفضولية.">Educational chatbot for curious minds.</p>
+                        <ul>
+                            <li data-en="Age-appropriate responses" data-ar="إجابات مناسبة للعمر">Age-appropriate responses</li>
+                            <li data-en="Ask about tech & behavior" data-ar="اسأل عن التقنية والسلوك">Ask about tech & behavior</li>
+                            <li data-en="6 interactive emotions" data-ar="٦ مشاعر تفاعلية">6 interactive emotions</li>
+                        </ul>
+                        <div class="chat-preview" aria-hidden="true">
+                            <div class="chat-bubble-user" data-en="What is AI? 🤔" data-ar="ما هو الذكاء الاصطناعي؟ 🤔">What is AI? 🤔</div>
+                            <div class="chat-bubble-byte" data-en="AI is like a smart robot brain that learns from patterns!" data-ar="الذكاء الاصطناعي مثل دماغ روبوت ذكي يتعلم من الأنماط!">AI is like a smart robot brain that learns from patterns!</div>
+                        </div>
+                    </div>
+
+                    <!-- Feature 6: Daily Hub -->
+                    <div class="feature-card reveal" style="transition-delay: 0.16s;">
+                        <div class="feature-icon-wrap">
+                            <div class="feature-icon">📋</div>
+                        </div>
+                        <h3 data-en="Daily Hub" data-ar="المركز اليومي">Daily Hub</h3>
+                        <p data-en="Build healthy offline habits too!" data-ar="ابنِ عادات صحية خارج الإنترنت أيضًا!">Build healthy offline habits too!</p>
+                        <ul>
+                            <li data-en="Brush teeth, play outside" data-ar="تنظيف الأسنان، اللعب بالخارج">Brush teeth, play outside</li>
+                            <li data-en="Parent-approved tasks" data-ar="مهام معتمدة من الوالدين">Parent-approved tasks</li>
+                            <li data-en="Earn point rewards" data-ar="اكسب مكافآت النقاط">Earn point rewards</li>
+                        </ul>
+                        <div class="daily-tasks-preview" aria-hidden="true">
+                            <span class="daily-check done">🪥</span>
+                            <span class="daily-check done">📖</span>
+                            <span class="daily-check">🏃</span>
+                            <span class="daily-check">🧹</span>
+                            <span class="daily-check">💧</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================== MASCOT (BYTE) ============================== -->
+        <section id="mascot" class="dark-section section-padding" aria-labelledby="mascot-heading">
+            <div class="mascot-glow" aria-hidden="true"></div>
+            <div class="container byte-container reveal">
+                <h2 id="mascot-heading" class="sr-only">Meet BYTE the Robot</h2>
+
+                <div class="speech-bubble" role="status" aria-live="polite">
+                    <span class="speech-text" id="byte-speech">"Did you know? The internet travels through cables under the ocean! 🌊"</span>
+                </div>
+
+                <div class="byte-mascot-image-wrap" id="byte-robot" aria-label="BYTE the Robot mascot">
+                    <img src="assets/card_cyber_bot.png" alt="BYTE - Your AI Robot Friend" class="byte-mascot-img" loading="lazy">
+                    <div class="byte-glow-ring" aria-hidden="true"></div>
+                </div>
+
+                <p class="mascot-info" data-en="Tap BYTE anywhere in the app for fun facts and <strong style='color: var(--warning-amber);'>+5 bonus points!</strong>" data-ar="انقر على BYTE في أي مكان في التطبيق للحصول على حقائق ممتعة و<strong style='color: var(--warning-amber);'>+٥ نقاط إضافية!</strong>">Tap BYTE anywhere in the app for fun facts and <strong style="color: var(--warning-amber);">+5 bonus points!</strong></p>
+            </div>
+        </section>
+
+        <!-- ============================== STORIES PREVIEW ============================== -->
+        <section id="stories" class="light-section section-padding" aria-labelledby="stories-heading">
+            <div class="container">
+                <div class="section-header reveal">
+                    <div class="badge-ui" style="color: var(--steel-blue); margin-bottom: 12px;" data-en="Original Content" data-ar="محتوى أصلي">Original Content</div>
+                    <h2 id="stories-heading" data-en="Stories That Teach, Not Preach 📖" data-ar="قصص تُعلّم ولا تُملي 📖">Stories That Teach, Not Preach 📖</h2>
+                    <p data-en="Real scenarios, real lessons. Every story ends with a quick quiz to lock in understanding." data-ar="سيناريوهات حقيقية، دروس حقيقية. كل قصة تنتهي باختبار سريع لتثبيت الفهم.">Real scenarios, real lessons. Every story ends with a quick quiz to lock in understanding.</p>
+                </div>
+
+                <div class="stories-scroll-wrapper reveal">
+                    <div class="stories-scroll" id="stories-scroll" role="list" aria-label="Story cards">
+                        <article class="story-card" role="listitem">
+                            <div class="story-emoji">📱</div>
+                            <h3 class="story-title" data-en="Ahmed & the Phone That Stole His Time" data-ar="أحمد والهاتف الذي سرق وقته">Ahmed & the Phone That Stole His Time</h3>
+                            <p class="story-excerpt" data-en="Ahmed loves his games, but realizes he missed his friend's birthday party because he couldn't put the screen down." data-ar="أحمد يحب ألعابه، لكنه أدرك أنه فاتته حفلة عيد ميلاد صديقه لأنه لم يستطع ترك الشاشة.">Ahmed loves his games, but realizes he missed his friend's birthday party because he couldn't put the screen down.</p>
+                            <span class="story-tag" data-en="Screen Time" data-ar="وقت الشاشة">Screen Time</span>
+                            <a href="#" class="story-link" data-en="Read in App →" data-ar="اقرأ في التطبيق ←">Read in App <span aria-hidden="true">→</span></a>
+                        </article>
+
+                        <article class="story-card" role="listitem">
+                            <div class="story-emoji">🌙</div>
+                            <h3 class="story-title" data-en="Layla and the Long Night" data-ar="ليلى والليلة الطويلة">Layla and the Long Night</h3>
+                            <p class="story-excerpt" data-en="Why is Layla so tired at school? A story about blue light, sleep hygiene, and the importance of turning off devices." data-ar="لماذا ليلى متعبة جداً في المدرسة؟ قصة عن الضوء الأزرق والنوم الصحي وأهمية إغلاق الأجهزة.">Why is Layla so tired at school? A story about blue light, sleep hygiene, and the importance of turning off devices.</p>
+                            <span class="story-tag" data-en="Sleep Health" data-ar="صحة النوم">Sleep Health</span>
+                            <a href="#" class="story-link" data-en="Read in App →" data-ar="اقرأ في التطبيق ←">Read in App <span aria-hidden="true">→</span></a>
+                        </article>
+
+                        <article class="story-card" role="listitem">
+                            <div class="story-emoji">🛡️</div>
+                            <h3 class="story-title" data-en="Maryam & the Strange Picture" data-ar="مريم والصورة الغريبة">Maryam & the Strange Picture</h3>
+                            <p class="story-excerpt" data-en='When a stranger asks Maryam for a photo online, she remembers BYTE&apos;s golden rule: "Stop, Block, and Tell."' data-ar='عندما يطلب غريب من مريم صورة عبر الإنترنت، تتذكر قاعدة BYTE الذهبية: "توقف، احظر، وأخبر."'>When a stranger asks Maryam for a photo online, she remembers BYTE's golden rule: "Stop, Block, and Tell."</p>
+                            <span class="story-tag" data-en="Stranger Danger" data-ar="خطر الغرباء">Stranger Danger</span>
+                            <a href="#" class="story-link" data-en="Read in App →" data-ar="اقرأ في التطبيق ←">Read in App <span aria-hidden="true">→</span></a>
+                        </article>
+
+                        <article class="story-card" role="listitem">
+                            <div class="story-emoji">🎨</div>
+                            <h3 class="story-title" data-en="Nada & the Annoying Comment" data-ar="ندى والتعليق المزعج">Nada & the Annoying Comment</h3>
+                            <p class="story-excerpt" data-en="Nada posts her artwork online but gets a mean comment. Learn how she handles cyberbullying with grace and courage." data-ar="ندى تنشر أعمالها الفنية على الإنترنت لكنها تتلقى تعليقاً سيئاً. تعلم كيف تتعامل مع التنمر الإلكتروني بأناقة وشجاعة.">Nada posts her artwork online but gets a mean comment. Learn how she handles cyberbullying with grace and courage.</p>
+                            <span class="story-tag" data-en="Cyberbullying" data-ar="التنمر الإلكتروني">Cyberbullying</span>
+                            <a href="#" class="story-link" data-en="Read in App →" data-ar="اقرأ في التطبيق ←">Read in App <span aria-hidden="true">→</span></a>
+                        </article>
+
+                        <article class="story-card" role="listitem">
+                            <div class="story-emoji">🔑</div>
+                            <h3 class="story-title" data-en="Omar's Password Problem" data-ar="مشكلة كلمة مرور عمر">Omar's Password Problem</h3>
+                            <p class="story-excerpt" data-en='Omar uses "123456" for everything. When his account gets hacked, BYTE teaches him the art of strong passwords.' data-ar='عمر يستخدم "١٢٣٤٥٦" لكل شيء. عندما يتم اختراق حسابه، يعلّمه BYTE فن كلمات المرور القوية.'>Omar uses "123456" for everything. When his account gets hacked, BYTE teaches him the art of strong passwords.</p>
+                            <span class="story-tag" data-en="Password Safety" data-ar="أمان كلمة المرور">Password Safety</span>
+                            <a href="#" class="story-link" data-en="Read in App →" data-ar="اقرأ في التطبيق ←">Read in App <span aria-hidden="true">→</span></a>
+                        </article>
+                    </div>
+                    <div class="stories-fade-left" aria-hidden="true"></div>
+                    <div class="stories-fade-right" aria-hidden="true"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================== FOR PARENTS ============================== -->
+        <section id="parents" class="light-section section-padding" style="background: white;" aria-labelledby="parents-heading">
+            <div class="container split-layout">
+                <div class="parents-content reveal">
+                    <div class="badge-ui" style="color: var(--warning-amber); margin-bottom: 12px;" data-en="Peace of Mind" data-ar="راحة البال">Peace of Mind</div>
+                    <h2 id="parents-heading">
+                        <span data-en="Built for Kids," data-ar="مصمم للأطفال،">Built for Kids,</span><br>
+                        <span data-en="Trusted by Parents 👨‍👩‍👧" data-ar="موثوق من الآباء 👨‍👩‍👧">Trusted by Parents 👨‍👩‍👧</span>
+                    </h2>
+                    <ul class="parents-list">
+                        <li data-en="Parent Hub with curated advice on screen time, safety, and behavior." data-ar="مركز الآباء مع نصائح مختارة حول وقت الشاشة والسلامة والسلوك.">Parent Hub with curated advice on screen time, safety, and behavior.</li>
+                        <li data-en="Task approval system — approve kids' daily activities before points are awarded." data-ar="نظام الموافقة على المهام — وافق على أنشطة الأطفال اليومية قبل منح النقاط.">Task approval system — approve kids' daily activities before points are awarded.</li>
+                        <li data-en="Custom task creation tailored to your family's routine." data-ar="إنشاء مهام مخصصة تناسب روتين عائلتك.">Custom task creation tailored to your family's routine.</li>
+                        <li data-en="Progress tracking and badge monitoring across all activities." data-ar="تتبع التقدم ومراقبة الشارات عبر جميع الأنشطة.">Progress tracking and badge monitoring across all activities.</li>
+                        <li data-en="100% offline-capable — no internet required after download." data-ar="يعمل ١٠٠٪ بدون إنترنت — لا حاجة للاتصال بعد التحميل.">100% offline-capable — no internet required after download.</li>
+                        <li data-en="No ads, no in-app purchases, no data collection. Ever." data-ar="بدون إعلانات، بدون مشتريات داخلية، بدون جمع بيانات. أبداً.">No ads, no in-app purchases, no data collection. Ever.</li>
+                    </ul>
+                    <a href="#download" class="btn btn-primary" style="margin-top: 8px;">
+                        <span class="btn-icon" aria-hidden="true">👨‍👩‍👧</span>
+                        <span data-en="Explore Parent Features" data-ar="اكتشف ميزات الآباء">Explore Parent Features</span>
+                    </a>
+                </div>
+
+                <div class="parents-visual reveal">
+                    <div class="hero-bg-showcase">
+                        <img src="assets/hero_background.png" alt="FLOW - Family using the app together" class="hero-bg-img" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================== GAMIFICATION ============================== -->
+        <section id="gamification" class="dark-section section-padding" aria-labelledby="gamification-heading">
+            <div class="container text-center">
+                <div class="reveal">
+                    <div class="badge-ui" style="color: var(--warning-amber); margin-bottom: 12px;" data-en="Rewards System" data-ar="نظام المكافآت">Rewards System</div>
+                    <h2 id="gamification-heading">
+                        <span data-en="Earn Badges, Level Up," data-ar="اكسب شارات، ارتقِ بمستواك،">Earn Badges, Level Up,</span><br>
+                        <span data-en="Become a Tech Hero! 🏆" data-ar="كن بطل التكنولوجيا! 🏆">Become a Tech Hero! 🏆</span>
+                    </h2>
+                </div>
+
+                <div class="level-path reveal" aria-label="Level progression path">
+                    <div class="level-node level-done">
+                        <div class="level-circle">🌱</div>
+                        <div class="level-name" data-en="Rookie" data-ar="مبتدئ">Rookie</div>
+                    </div>
+                    <div class="level-line level-line-done" aria-hidden="true"></div>
+                    <div class="level-node level-done">
+                        <div class="level-circle">🔍</div>
+                        <div class="level-name" data-en="Explorer" data-ar="مستكشف">Explorer</div>
+                    </div>
+                    <div class="level-line level-line-done" aria-hidden="true"></div>
+                    <div class="level-node level-done">
+                        <div class="level-circle">💡</div>
+                        <div class="level-name" data-en="Tech Kid" data-ar="طفل تقني">Tech Kid</div>
+                    </div>
+                    <div class="level-line level-line-active" aria-hidden="true"></div>
+                    <div class="level-node level-current">
+                        <div class="level-circle level-pulse">⭐</div>
+                        <div class="level-name" data-en="Superkid" data-ar="طفل خارق">Superkid</div>
+                    </div>
+                    <div class="level-line" aria-hidden="true"></div>
+                    <div class="level-node level-locked">
+                        <div class="level-circle">🚀</div>
+                        <div class="level-name" data-en="Tech Hero" data-ar="بطل التقنية">Tech Hero</div>
+                    </div>
+                </div>
+
+                <div class="badges-container reveal">
+                    <div class="badge-item" title="Earth Explorer — Complete all tech topics"><span>🌍</span></div>
+                    <div class="badge-item" title="Shield Master — Ace all safety quizzes"><span>🛡️</span></div>
+                    <div class="badge-item" title="Brainiac — Score 100% on 5 quizzes"><span>🧠</span></div>
+                    <div class="badge-item" title="Super Star — Earn 1000 points"><span>⭐</span></div>
+                    <div class="badge-item" title="Rocket Rider — Reach Tech Hero level"><span>🚀</span></div>
+                    <div class="badge-item" title="Bookworm — Read all 10 stories"><span>📚</span></div>
+                    <div class="badge-item" title="Habit Hero — Complete 7 daily hubs"><span>💪</span></div>
+                    <div class="badge-item" title="BYTE Buddy — Tap BYTE 50 times"><span>🤖</span></div>
+                </div>
+
+                <div class="progress-wrapper reveal">
+                    <div class="progress-labels">
+                        <span data-en="Level 4: Superkid" data-ar="المستوى ٤: طفل خارق">Level 4: Superkid</span>
+                        <span data-en="Level 5: Tech Hero" data-ar="المستوى ٥: بطل التقنية">Level 5: Tech Hero</span>
+                    </div>
+                    <div class="progress-bar-bg" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" aria-label="Experience progress">
+                        <div class="progress-fill" id="xp-bar"></div>
+                    </div>
+                    <div class="progress-detail" data-en="450 / 500 XP to next level" data-ar="٤٥٠ / ٥٠٠ نقطة خبرة للمستوى التالي">450 / 500 XP to next level</div>
+                </div>
+
+                <div class="stats-grid reveal">
+                    <div class="stat-item">
+                        <div class="stat-num" data-target="100" data-suffix="">0</div>
+                        <div class="stat-label" data-en="Levels" data-ar="مستويات">Levels</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-num" data-target="50" data-suffix="">0</div>
+                        <div class="stat-label" data-en="Badges" data-ar="شارات">Badges</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-num" data-target="1000" data-suffix="+">0</div>
+                        <div class="stat-label" data-en="Questions" data-ar="أسئلة">Questions</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-num" data-target="10" data-suffix="">0</div>
+                        <div class="stat-label" data-en="Stories" data-ar="قصص">Stories</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================== BILINGUAL ============================== -->
+        <section id="bilingual" class="light-section section-padding" aria-labelledby="bilingual-heading">
+            <div class="container text-center">
+                <div class="reveal">
+                    <div class="badge-ui" style="color: var(--steel-blue); margin-bottom: 12px;" data-en="Localization" data-ar="الترجمة">Localization</div>
+                    <h2 id="bilingual-heading" data-en="Full Bilingual Support 🌍" data-ar="دعم ثنائي اللغة كامل 🌍">Full Bilingual Support 🌍</h2>
+                    <p style="color: #4a5568; max-width: 540px; margin: 0 auto; font-size: 1.1rem;" data-en="Available entirely in English and Arabic. Switch seamlessly within the app — stories, quizzes, games, and UI all adapt." data-ar="متوفر بالكامل بالعربية والإنجليزية. انتقل بسلاسة داخل التطبيق — القصص والاختبارات والألعاب والواجهة كلها تتكيف.">Available entirely in English and Arabic. Switch seamlessly within the app — stories, quizzes, games, and UI all adapt.</p>
+                </div>
+
+                <div class="bilingual-showcase reveal">
+                    <div class="lang-card lang-en">
+                        <div class="lang-flag">🇬🇧</div>
+                        <h3>Tech Superkids</h3>
+                        <p class="lang-quote">"Where learning meets fun!"</p>
+                        <div class="lang-meta">
+                            <span>LTR Interface</span>
+                            <span class="lang-check">✓ Full Translation</span>
+                        </div>
+                    </div>
+
+                    <div class="switch-icon-wrap" aria-hidden="true">
+                        <div class="switch-icon">⇄</div>
+                    </div>
+
+                    <div class="lang-card lang-ar" dir="rtl">
+                        <div class="lang-flag">🇸🇦</div>
+                        <h3>أبطال التكنولوجيا</h3>
+                        <p class="lang-quote">"حيث يلتقي التعلم بالمرح!"</p>
+                        <div class="lang-meta">
+                            <span>واجهة من اليمين لليسار</span>
+                            <span class="lang-check">✓ ترجمة كاملة</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================== DOWNLOAD CTA ============================== -->
+        <section id="download" class="dark-section" aria-labelledby="download-heading">
+            <div class="particles" id="download-particles" aria-hidden="true"></div>
+            <div class="download-glow" aria-hidden="true"></div>
+            <div class="container reveal" style="text-align: center; padding: 120px 0;">
+                <div class="download-rocket-wrap" aria-hidden="true">
+                    <img src="assets/rocket_icon.png" alt="" class="download-rocket-img" loading="lazy">
+                </div>
+                <h2 id="download-heading">
+                    <span data-en="Ready to Raise a" data-ar="هل أنت مستعد لتنشئة">Ready to Raise a</span><br>
+                    <span data-en="Tech Superkid? 🚀" data-ar="بطل تكنولوجيا؟ 🚀">Tech Superkid? 🚀</span>
+                </h2>
+                <p class="download-sub" data-en="Free. No ads. No data collection.<br>Just pure learning fun." data-ar="مجاني. بدون إعلانات. بدون جمع بيانات.<br>متعة تعلم خالصة.">Free. No ads. No data collection.<br>Just pure learning fun.</p>
+
+                <div class="apk-download-area">
+                    <a href="assets/app-release.apk" download class="apk-download-btn" id="main-download-btn" aria-label="Download FLOW APK">
+                        <div class="apk-icon">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <path d="M17.523 2.277L18.877 0.128C18.964-0.0147 18.8707-0.192 18.706-0.192C18.6413-0.192 18.58 -0.164 18.5373-0.115L17.148 2.098C15.627 1.402 13.89 1.01 12.023 1.01C10.156 1.01 8.419 1.402 6.898 2.098L5.509-0.115C5.4663-0.164 5.405-0.192 5.34-0.192C5.1753-0.192 5.082-0.0147 5.169 0.128L6.523 2.277C3.433 3.928 1.3 6.983 1.002 10.556H23.044C22.746 6.983 20.613 3.928 17.523 2.277ZM7.257 7.394C6.687 7.394 6.224 6.931 6.224 6.361C6.224 5.791 6.687 5.328 7.257 5.328C7.827 5.328 8.29 5.791 8.29 6.361C8.29 6.931 7.827 7.394 7.257 7.394ZM16.789 7.394C16.219 7.394 15.756 6.931 15.756 6.361C15.756 5.791 16.219 5.328 16.789 5.328C17.359 5.328 17.822 5.791 17.822 6.361C17.822 6.931 17.359 7.394 16.789 7.394Z" fill="#3DDC84" transform="translate(0, 6)"/>
+                            </svg>
+                        </div>
+                        <div class="apk-text">
+                            <small data-en="DOWNLOAD FOR ANDROID" data-ar="تحميل لأندرويد">DOWNLOAD FOR ANDROID</small>
+                            <strong data-en="Get FLOW APK" data-ar="حمّل تطبيق FLOW">Get FLOW APK</strong>
+                        </div>
+                        <div class="apk-arrow">⬇</div>
+                    </a>
+                    <div class="apk-meta">
+                        <span data-en="📦 ~57 MB" data-ar="📦 ~٥٧ ميجابايت">📦 ~57 MB</span>
+                        <span>•</span>
+                        <span data-en="Android 5.0+" data-ar="أندرويد ٥.٠+">Android 5.0+</span>
+                        <span>•</span>
+                        <span data-en="v1.0 Release" data-ar="الإصدار ١.٠">v1.0 Release</span>
+                    </div>
+                    <div class="apk-install-note" data-en="💡 You may need to enable 'Install from unknown sources' in your device settings" data-ar="💡 قد تحتاج إلى تمكين 'التثبيت من مصادر غير معروفة' في إعدادات جهازك">
+                        💡 You may need to enable "Install from unknown sources" in your device settings
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ============================== FOOTER ============================== -->
+    <footer role="contentinfo">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a href="#" class="logo" aria-label="FLOW Home">
+                        <img src="assets/logo.jpeg" alt="FLOW Logo" class="logo-img">
+                        <span class="logo-text">F.L.<span class="logo-accent">O</span>.W</span>
+                    </a>
+                    <p class="footer-tagline" data-en="Find Life Outside Web" data-ar="اكتشف الحياة خارج الويب">Find Life Outside Web</p>
+                </div>
+                <div class="footer-nav">
+                    <div class="footer-col">
+                        <h4 data-en="Product" data-ar="المنتج">Product</h4>
+                        <a href="#features" data-en="Features" data-ar="المميزات">Features</a>
+                        <a href="#stories" data-en="Stories" data-ar="القصص">Stories</a>
+                        <a href="#gamification" data-en="Rewards" data-ar="المكافآت">Rewards</a>
+                        <a href="#bilingual" data-en="Languages" data-ar="اللغات">Languages</a>
+                        <a href="demos.html" data-en="Demos" data-ar="العروض">Demos</a>
+                        <a href="about.html" data-en="About" data-ar="عنّا">About</a>
+                    </div>
+                    <div class="footer-col">
+                        <h4 data-en="Support" data-ar="الدعم">Support</h4>
+                        <a href="#parents" data-en="For Parents" data-ar="للآباء">For Parents</a>
+                        <a href="#" data-en="Help Center" data-ar="مركز المساعدة">Help Center</a>
+                        <a href="#" data-en="Contact Us" data-ar="تواصل معنا">Contact Us</a>
+                        <a href="#" data-en="FAQ" data-ar="الأسئلة الشائعة">FAQ</a>
+                    </div>
+                    <div class="footer-col">
+                        <h4 data-en="Legal" data-ar="قانوني">Legal</h4>
+                        <a href="#" data-en="Privacy Policy" data-ar="سياسة الخصوصية">Privacy Policy</a>
+                        <a href="#" data-en="Terms of Service" data-ar="شروط الخدمة">Terms of Service</a>
+                        <a href="#" data-en="COPPA Compliance" data-ar="التوافق مع COPPA">COPPA Compliance</a>
+                        <a href="#" data-en="GitHub" data-ar="GitHub">GitHub</a>
+                    </div>
+                </div>
+                <div class="footer-social">
+                    <h4 data-en="Follow Us" data-ar="تابعنا">Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#" aria-label="Twitter" class="social-link">𝕏</a>
+                        <a href="#" aria-label="Instagram" class="social-link">📷</a>
+                        <a href="#" aria-label="YouTube" class="social-link">▶️</a>
+                        <a href="#" aria-label="GitHub" class="social-link">⌨️</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p data-en="Made with 💚 for curious kids everywhere." data-ar="صُنع بـ 💚 للأطفال الفضوليين في كل مكان.">Made with <span class="made-with" aria-label="love">💚</span> for curious kids everywhere.</p>
+                <p class="footer-copyright">&copy; 2026 FLOW — Find Life Outside Web. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Demo Modal -->
+    <div class="modal-overlay" id="demo-modal" role="dialog" aria-modal="true" aria-labelledby="demo-modal-title" hidden>
+        <div class="modal-content">
+            <button class="modal-close" id="demo-close" aria-label="Close demo modal">✕</button>
+            <h2 id="demo-modal-title" data-en="Watch Our App Demos 🎬" data-ar="شاهد عروض التطبيق 🎬">Watch Our App Demos 🎬</h2>
+            <p data-en="Explore our video walkthroughs showing all features of the FLOW app in action." data-ar="استكشف الفيديوهات التوضيحية التي تعرض جميع ميزات تطبيق FLOW.">Explore our video walkthroughs showing all features of the FLOW app in action.</p>
+            <div style="display:flex; gap:12px; flex-wrap:wrap; justify-content:center; margin-top:4px;">
+                <a href="demos.html" class="btn btn-primary" id="demo-cta" data-en="Watch Demos →" data-ar="شاهد العروض ←">Watch Demos →</a>
+                <a href="assets/app-release.apk" download class="btn btn-outline" id="demo-download" data-en="Download APK" data-ar="حمّل التطبيق">Download APK</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+</html>
