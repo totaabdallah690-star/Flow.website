@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FLOW App Demos — Watch It In Action</title>
+    <meta name="description" content="Watch FLOW in action. Explore video demos of Tech Superkids educational features, games, stories, and more.">
+    <meta name="theme-color" content="#0A1628">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Boogaloo&family=Fredoka:wght@400;500;600;700&family=Nunito:wght@600;700;800&family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="index.css">
+
+    <style>
+        /* ===== DEMOS PAGE SPECIFIC STYLES ===== */
+
+        /* Hero banner */
+        .demos-hero {
+            background: var(--navy-grad);
+            color: white;
+            padding: 140px 0 90px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .demos-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(244,164,54,0.10) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .demos-hero h1 {
+            font-size: clamp(2.4rem, 5vw, 3.8rem);
+            margin-bottom: 18px;
+            position: relative;
+        }
+
+        .demos-hero p {
+            font-size: 1.2rem;
+            color: rgba(255,255,255,0.75);
+            max-width: 560px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        /* ===== VIDEOS SECTION ===== */
+        .videos-section {
+            background: var(--light-cream);
+            padding: 100px 0 110px;
+        }
+
+        .videos-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            margin-top: 64px;
+        }
+
+        @media (max-width: 768px) {
+            .videos-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        /* Video card wrapper */
+        .video-card {
+            background: white;
+            border-radius: var(--radius-card);
+            overflow: hidden;
+            box-shadow: var(--shadow-card);
+            transition: transform 0.4s var(--ease-spring), box-shadow 0.4s ease;
+            opacity: 0;
+            transform: translateY(40px);
+        }
+
+        .video-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .video-card:hover {
+            transform: translateY(-10px) scale(1.01);
+            box-shadow: 0 32px 70px rgba(10,22,40,0.18);
+        }
+
+        .video-card:nth-child(2) { transition-delay: 0.1s; }
+        .video-card:nth-child(3) { transition-delay: 0.2s; }
+        .video-card:nth-child(4) { transition-delay: 0.3s; }
+
+        /* YouTube embed wrapper — 16:9 aspect ratio */
+        .video-embed-wrap {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 */
+            height: 0;
+            overflow: hidden;
+            background: var(--dark-navy);
+        }
+
+        .video-embed-wrap iframe {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            border: none;
+        }
+
+        /* Play overlay before activation */
+        .video-overlay {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(10,22,40,0.88) 0%, rgba(19,45,82,0.80) 100%);
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+            z-index: 5;
+        }
+
+        .video-overlay.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .play-btn-circle {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background: rgba(90,184,138,0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 0 40px rgba(90,184,138,0.55);
+            transition: transform 0.3s var(--ease-spring), background 0.3s ease;
+            margin-bottom: 14px;
+        }
+
+        .video-overlay:hover .play-btn-circle {
+            transform: scale(1.12);
+            background: var(--teal-accent);
+        }
+
+        .overlay-label {
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            color: rgba(255,255,255,0.85);
+            letter-spacing: 0.5px;
+        }
+
+        /* Card info area */
+        .video-info {
+            padding: 24px 28px 28px;
+        }
+
+        .video-number {
+            font-family: var(--font-ui);
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--teal-accent);
+            margin-bottom: 6px;
+        }
+
+        .video-title {
+            font-family: var(--font-heading);
+            font-size: 1.35rem;
+            color: var(--dark-navy);
+            margin-bottom: 10px;
+        }
+
+        .video-desc {
+            font-size: 0.98rem;
+            color: #4a5568;
+            line-height: 1.65;
+        }
+
+        .video-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            margin-top: 14px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            padding: 5px 14px;
+            border-radius: var(--radius-pill);
+        }
+
+        .tag-tech    { background: rgba(43,95,142,0.10); color: var(--steel-blue); }
+        .tag-safety  { background: rgba(90,184,138,0.10); color: var(--forest-green); }
+        .tag-game    { background: rgba(244,164,54,0.10); color: #c07a0a; }
+        .tag-feature { background: rgba(214,69,69,0.08); color: var(--error-red); }
+
+        /* ===== Coming soon notice ===== */
+        .coming-soon-note {
+            text-align: center;
+            margin-top: 60px;
+            padding: 32px 40px;
+            background: var(--dark-navy);
+            border-radius: var(--radius-card);
+            color: white;
+            max-width: 640px;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .coming-soon-note::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(90,184,138,0.12) 0%, transparent 70%);
+        }
+
+        .coming-soon-note h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            position: relative;
+        }
+
+        .coming-soon-note p {
+            font-size: 1rem;
+            color: rgba(255,255,255,0.65);
+            position: relative;
+        }
+
+        /* Divider */
+        .section-divider {
+            height: 4px;
+            background: linear-gradient(90deg, var(--warning-amber), var(--teal-accent), var(--steel-blue));
+        }
+    </style>
+</head>
+<body>
+
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- ============================== NAVBAR ============================== -->
+    <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+        <div class="container nav-container">
+            <a href="flow.html" class="logo" aria-label="FLOW Home">
+                <img src="assets/logo.jpeg" alt="FLOW Logo" class="logo-img">
+                <span class="logo-text">F.L.<span class="logo-accent">O</span>.W</span>
+            </a>
+            <div class="nav-links" id="nav-links" role="menubar">
+                <a href="flow.html#features" role="menuitem" data-en="Features" data-ar="المميزات">Features</a>
+                <a href="flow.html#stories" role="menuitem" data-en="Stories" data-ar="القصص">Stories</a>
+                <a href="flow.html#parents" role="menuitem" data-en="For Parents" data-ar="للآباء">For Parents</a>
+                <a href="demos.html" role="menuitem" data-en="Demos" data-ar="العروض" style="color: var(--teal-accent);">Demos</a>
+                <a href="about.html" role="menuitem" data-en="About" data-ar="عنّا">About</a>
+                <a href="flow.html#download" class="btn btn-primary btn-sm" role="menuitem" data-en="Download Now" data-ar="حمّل الآن">Download Now</a>
+            </div>
+            <button class="lang-toggle-btn" id="lang-toggle" aria-label="Toggle language" title="Toggle Arabic / English">
+                <span class="lang-toggle-icon">🌐</span>
+                <span class="lang-toggle-label" id="lang-label">AR</span>
+            </button>
+            <button class="mobile-menu-btn" id="mobile-btn" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-links">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+        </div>
+    </nav>
+
+    <main id="main-content">
+
+        <!-- ============================== DEMOS HERO ============================== -->
+        <section class="demos-hero" aria-labelledby="demos-heading">
+            <div class="particles" id="demos-particles" aria-hidden="true"></div>
+            <div class="container">
+                <div class="badge-ui" style="color: var(--warning-amber); margin-bottom: 16px;" data-en="🎬 Video Demos" data-ar="🎬 عروض مرئية">🎬 Video Demos</div>
+                <h1 id="demos-heading">
+                    <span data-en="See FLOW" data-ar="شاهد فلو">See FLOW</span><br>
+                    <span style="color: var(--teal-accent);" data-en="In Action ▶️" data-ar="أثناء العمل ▶️">In Action ▶️</span>
+                </h1>
+                <p data-en="Watch our interactive demos and discover how FLOW turns learning about technology, safety, and healthy habits into an unforgettable adventure." data-ar="شاهد عروضنا التفاعلية واكتشف كيف يّحول فلو التعلم عن التكنولوجيا والأمان والعادات الصحية إلى مغامرة لا تُنسى.">Watch our interactive demos and discover how FLOW turns learning about technology, safety, and healthy habits into an unforgettable adventure.</p>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- ============================== VIDEOS ============================== -->
+        <section class="videos-section" aria-labelledby="videos-heading">
+            <div class="container">
+                <div class="section-header">
+                    <div class="badge-ui" style="color: var(--steel-blue); margin-bottom: 12px;" data-en="Demo Videos" data-ar="مقاطع العروض">Demo Videos</div>
+                    <h2 id="videos-heading" style="font-size: clamp(2rem, 4vw, 2.8rem);" data-en="App Feature Walkthroughs 🚀" data-ar="جولات في مميزات التطبيق 🚀">App Feature Walkthroughs 🚀</h2>
+                    <p style="color: #4a5568; max-width: 560px; margin: 0 auto; font-size: 1.1rem;" data-en="Click any video to start watching. Real demo links will be added soon — for now enjoy our curated YouTube picks that show what's coming!" data-ar="انقر على أي فيديو لبدء المشاهدة. ستتم إضافة روابط العروض الحقيقية قريباً — في الوقت الحالي استمتع باختياراتنا من يوتيوب التي تظهر ما سيأتي!">Click any video to start watching. Real demo links will be added soon — for now enjoy our curated YouTube picks that show what's coming!</p>
+                </div>
+
+                <div class="videos-grid" id="videos-grid">
+
+                    <!-- VIDEO 1 -->
+                    <div class="video-card" id="video-card-1">
+                        <div class="video-embed-wrap" id="wrap-1">
+                            <!-- Overlay -->
+                            <div class="video-overlay" id="overlay-1" role="button" tabindex="0" aria-label="Play Demo Video 1" onclick="playVideo(1, 'dQw4w9WgXcQ')">
+                                <div class="play-btn-circle">▶</div>
+                                <span class="overlay-label">Click to Play</span>
+                            </div>
+                            <!-- Thumbnail placeholder (will be replaced by iframe on click) -->
+                            <img id="thumb-1"
+                                 src="https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg"
+                                 alt="Demo Video 1 thumbnail"
+                                 style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"
+                                 loading="lazy">
+                        </div>
+                        <div class="video-info">
+                            <div class="video-number" data-en="Demo 01" data-ar="عرض 01">Demo 01</div>
+                            <h3 class="video-title" data-en="Tech Universe — Explore the Digital World 🌐" data-ar="عالم التقنية — استكشف العالم الرقمي 🌐">Tech Universe — Explore the Digital World 🌐</h3>
+                            <p class="video-desc" data-en="A walkthrough of the Tech Universe feature where kids explore 6 interactive topic cards covering computers, AI, coding, and more." data-ar="جولة في ميزة عالم التقنية حيث يستكشف الأطفال 6 بطاقات تفاعلية تغطي أجهزة الكمبيوتر، الذكاء الاصطناعي، البرمجة وغيرها.">A walkthrough of the Tech Universe feature where kids explore 6 interactive topic cards covering computers, AI, coding, and more.</p>
+                            <span class="video-tag tag-tech" data-en="💻 Tech Universe" data-ar="💻 عالم التقنية">💻 Tech Universe</span>
+                        </div>
+                    </div>
+
+                    <!-- VIDEO 2 -->
+                    <div class="video-card" id="video-card-2">
+                        <div class="video-embed-wrap" id="wrap-2">
+                            <div class="video-overlay" id="overlay-2" role="button" tabindex="0" aria-label="Play Demo Video 2" onclick="playVideo(2, 'dQw4w9WgXcQ')">
+                                <div class="play-btn-circle">▶</div>
+                                <span class="overlay-label">Click to Play</span>
+                            </div>
+                            <img id="thumb-2"
+                                 src="https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg"
+                                 alt="Demo Video 2 thumbnail"
+                                 style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"
+                                 loading="lazy">
+                        </div>
+                        <div class="video-info">
+                            <div class="video-number" data-en="Demo 02" data-ar="عرض 02">Demo 02</div>
+                            <h3 class="video-title" data-en="Safety Sort — Spot Safe vs Risky Actions 🛡️" data-ar="فرز الأمان — اكتشف الأفعال الآمنة والخطرة 🛡️">Safety Sort — Spot Safe vs Risky Actions 🛡️</h3>
+                            <p class="video-desc" data-en="Watch our drag-and-drop Safety Sort game challenge kids to classify real-world online scenarios across 3 difficulty levels." data-ar="شاهد لعبة فرز الأمان بالسحب والإفلات التي تتحدى الأطفال في تصنيف سيناريوهات واقعية على الإنترنت عبر 3 مستويات صعوبة.">Watch our drag-and-drop Safety Sort game challenge kids to classify real-world online scenarios across 3 difficulty levels.</p>
+                            <span class="video-tag tag-safety" data-en="🛡️ Safety Game" data-ar="🛡️ لعبة الأمان">🛡️ Safety Game</span>
+                        </div>
+                    </div>
+
+                    <!-- VIDEO 3 -->
+                    <div class="video-card" id="video-card-3">
+                        <div class="video-embed-wrap" id="wrap-3">
+                            <div class="video-overlay" id="overlay-3" role="button" tabindex="0" aria-label="Play Demo Video 3" onclick="playVideo(3, 'dQw4w9WgXcQ')">
+                                <div class="play-btn-circle">▶</div>
+                                <span class="overlay-label">Click to Play</span>
+                            </div>
+                            <img id="thumb-3"
+                                 src="https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg"
+                                 alt="Demo Video 3 thumbnail"
+                                 style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"
+                                 loading="lazy">
+                        </div>
+                        <div class="video-info">
+                            <div class="video-number" data-en="Demo 03" data-ar="عرض 03">Demo 03</div>
+                            <h3 class="video-title" data-en="BYTE Smart Chat — Ask Anything 🤖" data-ar="محادثة بايت الذكية — اسأل أي شيء 🤖">BYTE Smart Chat — Ask Anything 🤖</h3>
+                            <p class="video-desc" data-en="Meet BYTE, the friendly AI robot companion. See how kids ask questions about technology in both Arabic and English and get age-appropriate answers." data-ar="تعرف على بايت، روبوت الذكاء الاصطناعي الودود. شاهد كيف يطرح الأطفال أسئلة حول التكنولوجيا باللغتين العربية والإنجليزية ويحصلون على إجابات مناسبة لأعمارهم.">Meet BYTE, the friendly AI robot companion. See how kids ask questions about technology in both Arabic and English and get age-appropriate answers.</p>
+                            <span class="video-tag tag-game" data-en="🤖 BYTE Chat" data-ar="🤖 محادثة بايت">🤖 BYTE Chat</span>
+                        </div>
+                    </div>
+
+                    <!-- VIDEO 4 -->
+                    <div class="video-card" id="video-card-4">
+                        <div class="video-embed-wrap" id="wrap-4">
+                            <div class="video-overlay" id="overlay-4" role="button" tabindex="0" aria-label="Play Demo Video 4" onclick="playVideo(4, 'dQw4w9WgXcQ')">
+                                <div class="play-btn-circle">▶</div>
+                                <span class="overlay-label">Click to Play</span>
+                            </div>
+                            <img id="thumb-4"
+                                 src="https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg"
+                                 alt="Demo Video 4 thumbnail"
+                                 style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"
+                                 loading="lazy">
+                        </div>
+                        <div class="video-info">
+                            <div class="video-number" data-en="Demo 04" data-ar="عرض 04">Demo 04</div>
+                            <h3 class="video-title" data-en="Daily Hub & Rewards — Earn Badges 🏆" data-ar="المركز اليومي والمكافآت — اربح الشارات 🏆">Daily Hub & Rewards — Earn Badges 🏆</h3>
+                            <p class="video-desc" data-en="Discover the full rewards system — Daily Hub tasks, badge collection, XP progress, and how parents can approve their children's achievements in real time." data-ar="اكتشف نظام المكافآت الكامل — مهام المركز اليومي، جمع الشارات، تقدم النقاط، وكيف يمكن للآباء الموافقة على إنجازات أطفالهم في الوقت الفعلي.">Discover the full rewards system — Daily Hub tasks, badge collection, XP progress, and how parents can approve their children's achievements in real time.</p>
+                            <span class="video-tag tag-feature" data-en="⭐ Rewards System" data-ar="⭐ نظام المكافآت">⭐ Rewards System</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Coming soon note -->
+                <div class="coming-soon-note reveal" id="coming-soon-note">
+                    <h3 data-en="🎬 Official Demos Coming Soon!" data-ar="🎬 العروض الرسمية قريباً!">🎬 Official Demos Coming Soon!</h3>
+                    <p data-en="We're putting the finishing touches on our full video walkthroughs. In the meantime, <a href='flow.html#download' style='color: var(--teal-accent); font-weight: 800;'>download the app</a> and experience it yourself — it's completely free!" data-ar="نضع اللمسات الأخيرة على جولات الفيديو الكاملة. في غضون ذلك، <a href='flow.html#download' style='color: var(--teal-accent); font-weight: 800;'>حمل التطبيق</a> وجربه بنفسك — إنه مجاني بالكامل!">We're putting the finishing touches on our full video walkthroughs. In the meantime, <a href="flow.html#download" style="color: var(--teal-accent); font-weight: 800;">download the app</a> and experience it yourself — it's completely free!</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ============================== FOOTER ============================== -->
+    <footer role="contentinfo">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a href="flow.html" class="logo" aria-label="FLOW Home">
+                        <img src="assets/logo.jpeg" alt="FLOW Logo" class="logo-img">
+                        <span class="logo-text">F.L.<span class="logo-accent">O</span>.W</span>
+                    </a>
+                    <p class="footer-tagline" data-en="Find Life Outside Web" data-ar="اكتشف الحياة خارج الويب">Find Life Outside Web</p>
+                </div>
+                <div class="footer-nav">
+                    <div class="footer-col">
+                        <h4 data-en="Explore" data-ar="استكشف">Explore</h4>
+                        <a href="flow.html#features" data-en="Features" data-ar="المميزات">Features</a>
+                        <a href="flow.html#stories" data-en="Stories" data-ar="القصص">Stories</a>
+                        <a href="flow.html#gamification" data-en="Rewards" data-ar="المكافآت">Rewards</a>
+                        <a href="about.html" data-en="About" data-ar="عنّا">About</a>
+                    </div>
+                    <div class="footer-col">
+                        <h4 data-en="Support" data-ar="الدعم">Support</h4>
+                        <a href="flow.html#parents" data-en="For Parents" data-ar="للآباء">For Parents</a>
+                        <a href="#" data-en="Help Center" data-ar="مركز المساعدة">Help Center</a>
+                        <a href="#" data-en="Contact Us" data-ar="تواصل معنا">Contact Us</a>
+                    </div>
+                    <div class="footer-col">
+                        <h4 data-en="Legal" data-ar="قانوني">Legal</h4>
+                        <a href="#" data-en="Privacy Policy" data-ar="سياسة الخصوصية">Privacy Policy</a>
+                        <a href="#" data-en="Terms of Service" data-ar="شروط الخدمة">Terms of Service</a>
+                        <a href="#" data-en="COPPA Compliance" data-ar="التوافق مع COPPA">COPPA Compliance</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Made with <span class="made-with" aria-label="love">💚</span> for curious kids everywhere.</p>
+                <p class="footer-copyright">&copy; 2026 FLOW — Find Life Outside Web. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="index.js"></script>
+    <script>
+        // ===== Play video — lazy load iframe =====
+        function playVideo(idx, youtubeId) {
+            const wrap    = document.getElementById('wrap-' + idx);
+            const overlay = document.getElementById('overlay-' + idx);
+            const thumb   = document.getElementById('thumb-' + idx);
+
+            // Remove thumbnail
+            if (thumb) thumb.remove();
+
+            // Inject iframe
+            const iframe = document.createElement('iframe');
+            iframe.src = `https://www.youtube.com/embed/${youtubeId}?autoplay=1&rel=0`;
+            iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+            iframe.allowFullscreen = true;
+            iframe.title = 'FLOW Demo Video ' + idx;
+            iframe.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;border:none;';
+            wrap.appendChild(iframe);
+
+            // Hide overlay
+            overlay.classList.add('hidden');
+        }
+
+        // Keyboard support for overlays
+        document.querySelectorAll('.video-overlay').forEach(overlay => {
+            overlay.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    overlay.click();
+                }
+            });
+        });
+
+        // ===== Scroll reveal =====
+        const revealEls = document.querySelectorAll('.video-card, .reveal');
+        const revealObs = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); }
+            });
+        }, { threshold: 0.1 });
+        revealEls.forEach(el => revealObs.observe(el));
+
+        // ===== Floating particles =====
+        function spawnParticles(containerId) {
+            const el = document.getElementById(containerId);
+            if (!el) return;
+            for (let i = 0; i < 18; i++) {
+                const p = document.createElement('div');
+                p.className = 'particle';
+                const size = Math.random() * 5 + 2;
+                const colors = ['rgba(90,184,138,0.45)', 'rgba(43,95,142,0.35)', 'rgba(244,164,54,0.35)'];
+                p.style.cssText = `
+                    width:${size}px; height:${size}px;
+                    background:${colors[Math.floor(Math.random()*colors.length)]};
+                    left:${Math.random()*100}%;
+                    bottom:-20px;
+                    animation-duration:${Math.random()*10+8}s;
+                    animation-delay:${Math.random()*6}s;
+                    opacity:${Math.random()*0.6+0.2};
+                `;
+                el.appendChild(p);
+            }
+        }
+        spawnParticles('demos-particles');
+    </script>
+</body>
+</html>
